@@ -22,7 +22,7 @@
 
 <!-- ===== Navigation ====== 
 ============================-->
-    <nav class="navbar navbar-custom navbar-fixed-top" role="navigation">
+    <nav class="navbar navbar-custom" role="navigation">
       <div class="container">
         
         <div class="navbar-header">
@@ -45,10 +45,7 @@
           <div class="navbar-form navbar-right btn-group">
             <button type="button" class="btn btn-default">Score</button>
             <button type="button" class="btn btn-default" href="#menu-toggle" id="menu-toggle">Favorites</button>
-
-<!-- ==== I'm waiting on a reply about how to add action to this button without using <form action = "/logout">, but I'm not going to change anything as far as Login, Register, Logout - so we can proceed with the routes naming, and I'll keep you updated on when I get this working ===================================== -->
-            <button type="submit" class="btn btn-default"><a href = "/logout" id = "unLinkMe">Logout</a></button>
-
+            <button type="button" class="btn btn-default">Logout</button>
           </div>
           
           <form class="navbar-form">
@@ -72,124 +69,69 @@
         <div id="sidebar-wrapper">
             <ul class="sidebar-nav">
                 <li id = "pushDown" class="sidebar-brand">
-                    <a href="#" id = "sidebarFixTop">
+                    <a href="#">
                         My Favorites
                     </a>
                 </li>
                 <li>
-                    <a href="#">
-                        <div id ="faveBox">
-                            <p>Sushi 85</p>
-                            <!-- <p>Address: 233 Inspection Way, Mountain View, CA 99999</p> -->
-                            <p>Genre: Japanese</p>
-                        </div>
-                    </a>
+                    <a href="#">Favorite #1</a>
                 </li>
                 <li>
-                     <a href="#">
-                        <div id ="faveBox">
-                            <p>Sushi 85</p>
-                            <!-- <p>Address: 233 Inspection Way, Mountain View, CA 99999</p> -->
-                            <p>Genre: Japanese</p>
-                        </div>
-                    </a>
+                    <a href="#">Favorite #2</a>
                 </li>
                 <li>
-                     <a href="#">
-                        <div id ="faveBox">
-                            <p>Sushi 85</p>
-                            <!-- <p>Address: 233 Inspection Way, Mountain View, CA 99999</p> -->
-                            <p>Genre: Japanese</p>
-                        </div>
-                    </a>
+                    <a href="#">Favorite #3</a>
                 </li>
                 <li>
-                     <a href="#">
-                        <div id ="faveBox">
-                            <p>Sushi 85</p>
-                            <!-- <p>Address: 233 Inspection Way, Mountain View, CA 99999</p> -->
-                            <p>Genre: Japanese</p>
-                        </div>
-                    </a>
+                    <a href="#">Favorite #4</a>
                 </li>
                 <li>
-                     <a href="#">
-                        <div id ="faveBox">
-                            <p>Sushi 85</p>
-                            <!-- <p>Address: 233 Inspection Way, Mountain View, CA 99999</p> -->
-                            <p>Genre: Japanese</p>
-                        </div>
-                    </a>
+                    <a href="#">Favorite #5</a>
                 </li>
                 <li>
-                     <a href="#">
-                        <div id ="faveBox">
-                            <p>Sushi 85</p>
-                            <!-- <p>Address: 233 Inspection Way, Mountain View, CA 99999</p> -->
-                            <p>Genre: Japanese</p>
-                        </div>
-                    </a>
+                    <a href="#">Favorite #6</a>
                 </li>
                 <li>
-                     <a href="#">
-                        <div id ="faveBox">
-                            <p>Sushi 85</p>
-                            <!-- <p>Address: 233 Inspection Way, Mountain View, CA 99999</p> -->
-                            <p>Genre: Japanese</p>
-                        </div>
-                    </a>
+                    <a href="#">Favorite #7</a>
                 </li>
                 <li>
-                     <a href="#">
-                        <div id ="faveBox">
-                            <p>Sushi 85</p>
-                            <!-- <p>Address: 233 Inspection Way, Mountain View, CA 99999</p> -->
-                            <p>Genre: Japanese</p>
-                        </div>
-                    </a>
+                    <a href="#">Favorite #8</a>
                 </li>
                 <li>
-                     <a href="#">
-                        <div id ="faveBox">
-                            <p>Sushi 85</p>
-                           <!--  <p>Address: 233 Inspection Way, Mountain View, CA 99999</p> -->
-                            <p>Genre: Japanese</p>
-                        </div>
-                    </a>
+                    <a href="#">Favorite #9</a>
                 </li>
                 <li>
-                     <a href="#">
-                        <div id ="faveBox">
-                            <p>Sushi 85</p>
-                            <!-- <p>Address: 233 Inspection Way, Mountain View, CA 99999</p> -->
-                            <p>Genre: Japanese</p>
-                        </div>
-                    </a>
+                    <a href="#">Favorite #10</a>
                 </li>
             </ul>
         </div>
         <!-- /#sidebar-wrapper -->
-        <div id = "mapWrap">
+
         <!-- Page Content -->
         <div id="page-content-wrapper">
             <div class="container-fluid">
                 <div class="row">
-                    <div class="col-lg-12" id = "left_rightNoPad">
-                     
-                        <div id="map" class = "fill" style="width:100%; height:100vh"></div>
-
+                    <div class="col-lg-12">
+<<<<<<< HEAD
+                        <h1>FULL WIDTH MAP INSIDE THIS CONTAINER</h1>
+                        <p>The favorites will slide out from the left. Also, disregard the ugly colors.</p>
+                        <p>I'm not sure why but if you try to put any content outside of the #page-content-wrapper it will break.</p>
+=======
+                        <div id="map" style="width:1000px; height:1000px">asdfdd</div>
+>>>>>>> d763b657029b13a98179edc43f239a9a97a797a2
                   <!--       <a href="#menu-toggle" class="btn btn-default" id="menu-toggle">Show Favorites</a> -->
                     </div>
                 </div>
             </div>
         </div>
         <!-- /#page-content-wrapper -->
-        </div>
 
     </div>
     
 <!-- ==== Scripts ====
 ======================-->
+<<<<<<< HEAD
+=======
     <script>
       function initMap() {
         // Create a map object and specify the DOM element for display.
@@ -213,6 +155,7 @@
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA4B_Z4wNRWBnxC_OCp56IjcywclL8afMg&callback=initMap"
     async defer></script>
 
+>>>>>>> d763b657029b13a98179edc43f239a9a97a797a2
     <script src="dashjs/jquery.js"></script>
 
     <!-- Bootstrap Core JavaScript -->

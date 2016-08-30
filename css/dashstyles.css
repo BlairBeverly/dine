@@ -7,11 +7,11 @@
 }
 
 #colorMe {
-    background-color: green;
+    background-color: black;
 }
 
 .navbar-custom {
-    background-color: #DD4034;
+    background-color: black;
 }
 
 #noLink {
@@ -32,5 +32,10 @@
 }
 
 #pushDown {
-    margin-top: 20px;
+    margin-top: 18px;
+}
+
+#unLinkMe {
+    text-decoration: none !important;
+    color: black;
 }
