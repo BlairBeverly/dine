@@ -1,0 +1,36 @@
+#longer {
+    width: 460px;
+}
+
+#backUp {
+    margin-right: 35px;
+}
+
+#colorMe {
+    background-color: green;
+}
+
+.navbar-custom {
+    background-color: #DD4034;
+}
+
+#noLink {
+    text-decoration: none !important;
+    color: white; 
+}
+
+#noLink:hover {
+    color: black;
+}
+
+#noLink:active {
+    color: black;
+}
+
+.navbar {
+    margin-bottom: 0px !important;
+}
+
+#pushDown {
+    margin-top: 20px;
+}
