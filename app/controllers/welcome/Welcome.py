@@ -11,7 +11,7 @@ class Welcome(Controller):
    
     def index(self):
         
-        return self.load_view('/welcome/landing.html')
+        return self.load_view('landing.html')
 
     def register(self):
         user_info = {
@@ -46,9 +46,9 @@ class Welcome(Controller):
 
         return self.load_view('dashboard.html', users=users)
 
-
+    
 
     def logout(self):
         session.clear()
-        return self.load_view('/welcome/landing.html')
+        return self.load_view('landing.html')
 
