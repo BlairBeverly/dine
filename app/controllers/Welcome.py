@@ -1,5 +1,6 @@
+from __future__ import print_function
 from system.core.controller import *
-
+import sys
 
 class Welcome(Controller):
     def __init__(self, action):
@@ -14,21 +15,20 @@ class Welcome(Controller):
         return self.load_view('/welcome/landing.html')
 
     def register(self):
+        sys.stderr.write('Test1\n')
         user_info = {
             "email" : request.form['email'],
             "password" : request.form['password'],
             "phone" : request.form['phone']
         }
-
+        sys.stderr.write('Test2\n')
         user_id = self.models['WelcomeModel'].add_user(user_info)
-
+        sys.stderr.write('Test3\n')
         session['id'] = user_id[0]['id']
-        session['email'] = user_id[0]['email']
-        session['phone'] = user_id[0]['phone']
 
         users = self.models['WelcomeModel'].get_users(user_id)
-
-        return self.load_view('dashboard.html', users=users)
+        sys.stderr.write('Test4\n')
+        return self.load_view('/restaurants/dashboard.html', users=users)
 
 
     def login(self):
@@ -44,9 +44,9 @@ class Welcome(Controller):
 
         users = self.models['WelcomeModel'].get_users(user_id)
 
-        return self.load_view('dashboard.html', users=users)
+        return self.load_view('/restaurants/dashboard.html', users=users)
 
-
+    
 
     def logout(self):
         session.clear()
