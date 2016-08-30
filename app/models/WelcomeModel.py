@@ -5,7 +5,6 @@ class WelcomeModel(Model):
     def __init__(self):
         super(WelcomeModel, self).__init__()
    
-
     def add_user(self, user):
         query = "INSERT INTO users (email, password, phone, created_at, updated_at) VALUES (:email, :password, :phone, NOW(), NOW())"
         self.db.query_db(query, user)
