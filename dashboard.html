@@ -112,9 +112,7 @@
             <div class="container-fluid">
                 <div class="row">
                     <div class="col-lg-12">
-                        <h1>FULL WIDTH MAP INSIDE THIS CONTAINER</h1>
-                        <p>The favorites will slide out from the left. Also, disregard the ugly colors.</p>
-                        <p>I'm not sure why but if you try to put any content outside of the #page-content-wrapper it will break.</p>
+                        <div id="map" style="width:1000px; height:1000px">asdfdd</div>
                   <!--       <a href="#menu-toggle" class="btn btn-default" id="menu-toggle">Show Favorites</a> -->
                     </div>
                 </div>
@@ -126,6 +124,29 @@
     
 <!-- ==== Scripts ====
 ======================-->
+    <script>
+      function initMap() {
+        // Create a map object and specify the DOM element for display.
+        var map = new google.maps.Map(document.getElementById('map'), {
+          center: {lat: 37.7749, lng: -122.45},
+          scrollwheel: false,
+          zoom: 12
+        });
+
+        var myLatLng = {lat: 37.791116, lng: -122.403816}
+
+        var marker = new google.maps.Marker({
+          position: myLatLng,
+          map: map,
+          title: 'Tiramisu Kitchen'
+        });
+
+      }
+
+    </script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA4B_Z4wNRWBnxC_OCp56IjcywclL8afMg&callback=initMap"
+    async defer></script>
+
     <script src="dashjs/jquery.js"></script>
 
     <!-- Bootstrap Core JavaScript -->
