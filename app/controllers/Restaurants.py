@@ -11,7 +11,7 @@ class Restaurants(Controller):
    
     def index(self):
         
-        return self.load_view('landing.html')
+        return self.load_view('/restaurants/dashboard.html')
 
  
 
