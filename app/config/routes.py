@@ -6,8 +6,3 @@ routes['default_controller'] = 'Welcome'
 routes['POST']['/register'] = 'Welcome#register'
 routes['POST']['/login'] = 'Welcome#login'
 routes['POST']['/logout'] = 'Welcome#logout' 
-
-
-
-
-
