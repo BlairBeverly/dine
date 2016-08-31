@@ -1,0 +1,2 @@
+MAILTO="blair.beverly@gmail.com"
+03 9 * * * source /Users/bbeverly/codingdojo/inspect-practice/scc/inspections/bin/activate && python /Users/bbeverly/codingdojo/inspect-practice/scc/sfdata.py > /dev/null

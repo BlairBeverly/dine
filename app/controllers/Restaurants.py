@@ -9,16 +9,26 @@ class Restaurants(Controller):
         self.db = self._app.db
 
    
-    def index(self):
-        locations = self.models['Restaurant'].get_next_ten_restaurants()
-        return self.load_view(
-            '/restaurants/dashboard.html', 
-            locations=locations, 
-            nextpage=1)
+    def index(self, page_num):
+        min_score = session.get('min_score', 0)
+        favorites = session.get('only_favorites', False)
 
-    def nextTen(self, page_num):
-        locations = self.models['Restaurant'].get_next_ten_restaurants(page_num)
+        locations = self.models['Restaurant'].get_restaurants(
+            page_num=page_num,
+            score=min_score,
+            favorites=favorites,
+            user_id = session['id'])
+
+        nextpage = int(page_num) + 1
+
         return self.load_view(
             '/restaurants/dashboard.html', 
             locations=locations, 
-            nextpage=int(page_num)+1)
+            nextpage=nextpage)
+
+    def filter(self):
+        session['min_score'] = request.form.get('min_score', 0)
+        session['only_favorites'] = True if 'favorites' in request.form else False
+
+        return redirect('/restaurants/0')
+
