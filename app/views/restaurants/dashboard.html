@@ -76,102 +76,25 @@
                         My Favorites
                     </a>
                 </li>
+
+                {% for location in locations %}
                 <li>
                     <a href="#">
                         <div id ="faveBox">
-                            <p>Sushi 85</p>
-                            <!-- <p>Address: 233 Inspection Way, Mountain View, CA 99999</p> -->
-                            <p>Genre: Japanese</p>
+                            <p>{{ location['name']}}</p>
                         </div>
                     </a>
                 </li>
-                <li>
-                     <a href="#">
-                        <div id ="faveBox">
-                            <p>Sushi 85</p>
-                            <!-- <p>Address: 233 Inspection Way, Mountain View, CA 99999</p> -->
-                            <p>Genre: Japanese</p>
-                        </div>
-                    </a>
-                </li>
-                <li>
-                     <a href="#">
-                        <div id ="faveBox">
-                            <p>Sushi 85</p>
-                            <!-- <p>Address: 233 Inspection Way, Mountain View, CA 99999</p> -->
-                            <p>Genre: Japanese</p>
-                        </div>
-                    </a>
-                </li>
-                <li>
-                     <a href="#">
-                        <div id ="faveBox">
-                            <p>Sushi 85</p>
-                            <!-- <p>Address: 233 Inspection Way, Mountain View, CA 99999</p> -->
-                            <p>Genre: Japanese</p>
-                        </div>
-                    </a>
-                </li>
-                <li>
-                     <a href="#">
-                        <div id ="faveBox">
-                            <p>Sushi 85</p>
-                            <!-- <p>Address: 233 Inspection Way, Mountain View, CA 99999</p> -->
-                            <p>Genre: Japanese</p>
-                        </div>
-                    </a>
-                </li>
-                <li>
-                     <a href="#">
-                        <div id ="faveBox">
-                            <p>Sushi 85</p>
-                            <!-- <p>Address: 233 Inspection Way, Mountain View, CA 99999</p> -->
-                            <p>Genre: Japanese</p>
-                        </div>
-                    </a>
-                </li>
-                <li>
-                     <a href="#">
-                        <div id ="faveBox">
-                            <p>Sushi 85</p>
-                            <!-- <p>Address: 233 Inspection Way, Mountain View, CA 99999</p> -->
-                            <p>Genre: Japanese</p>
-                        </div>
-                    </a>
-                </li>
-                <li>
-                     <a href="#">
-                        <div id ="faveBox">
-                            <p>Sushi 85</p>
-                            <!-- <p>Address: 233 Inspection Way, Mountain View, CA 99999</p> -->
-                            <p>Genre: Japanese</p>
-                        </div>
-                    </a>
-                </li>
-                <li>
-                     <a href="#">
-                        <div id ="faveBox">
-                            <p>Sushi 85</p>
-                           <!--  <p>Address: 233 Inspection Way, Mountain View, CA 99999</p> -->
-                            <p>Genre: Japanese</p>
-                        </div>
-                    </a>
-                </li>
-                <li>
-                     <a href="#">
-                        <div id ="faveBox">
-                            <p>Sushi 85</p>
-                            <!-- <p>Address: 233 Inspection Way, Mountain View, CA 99999</p> -->
-                            <p>Genre: Japanese</p>
-                        </div>
-                    </a>
-                </li>
+                {% endfor %}
+
             </ul>
         </div>
         <!-- /#sidebar-wrapper -->
         <div id = "mapWrap">
         <!-- Page Content -->
+
         <div id="page-content-wrapper">
+         
             <div class="container-fluid">
                 <div class="row">
                     <div class="col-lg-12" id = "left_rightNoPad">
@@ -181,7 +104,9 @@
                   <!--       <a href="#menu-toggle" class="btn btn-default" id="menu-toggle">Show Favorites</a> -->
                     </div>
                 </div>
+
             </div>
+
         </div>
         <!-- /#page-content-wrapper -->
         </div>
@@ -199,13 +124,15 @@
           zoom: 12
         });
 
-        var myLatLng = {lat: 37.791116, lng: -122.403816}
+        {% for location in locations %}
 
-        var marker = new google.maps.Marker({
-          position: myLatLng,
-          map: map,
-          title: 'Tiramisu Kitchen'
-        });
+          var marker = new google.maps.Marker({
+            position: {lat: {{ location['latitude'] }}, lng: {{ location['longitude'] }}},
+            map: map,
+            title: '{{ location['title'] }}'
+          });
+
+        {% endfor %}
 
       }
 
