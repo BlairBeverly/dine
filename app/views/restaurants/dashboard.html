@@ -82,11 +82,16 @@
                     <a href="#">
                         <div id ="faveBox">
 
-                            <p>{{ location['name']}}</p>
-
+                            <div id = "scoreBox">100</div>
+                            <h3 id = "textFixUp">{{ location['name']}}</h3>
+                            <div id = "rightBoxContent">
+<!-- The DIV below will be a heart for "favoriting/unfavor" -->
+                              <div id = "unFavorite"><input type = "checkbox"></div>
+                            </div>
                         </div>
                     </a>
                 </li>
+
                 {% endfor %}
 
             </ul>
