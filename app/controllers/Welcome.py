@@ -21,15 +21,21 @@ class Welcome(Controller):
             "password" : request.form['password'],
             "phone" : request.form['phone']
         }
-        sys.stderr.write('Test2\n')
+        # sys.stderr.write('Test2\n')
         user_id = self.models['WelcomeModel'].add_user(user_info)
-        sys.stderr.write('Test3\n')
-        session['id'] = user_id[0]['id']
+        # sys.stderr.write('Test3\n')
+        if user_id['status'] == True:
+            session['id'] = user_id['user']['id']
 
-        users = self.models['WelcomeModel'].get_users(user_id)
-        sys.stderr.write('Test4\n')
-        return self.load_view('/restaurants/dashboard.html', users=users)
+        # users = self.models['WelcomeModel'].get_users(user_id)
+        # sys.stderr.write('Test4\n')
+            return self.load_view('/restaurants/dashboard.html')
+            # return self.load_view('/restaurants/dashboard.html', users=users)
+        else:
+            for message in user_id['errors']:
+                flash(message, 'regis_errors')
 
+            return redirect('/')
 
     def login(self):
         user_info = {
@@ -38,14 +44,17 @@ class Welcome(Controller):
         }
 
         user_id = self.models['WelcomeModel'].login_user(user_info)
+        if user_id['status'] == True:
+            session['id'] = user_id['user']['id']
 
-        session['id'] = user_id[0]['id']
-        session['email'] = user_id[0]['email']
+        # users = self.models['WelcomeModel'].get_users(user_id)
 
-        users = self.models['WelcomeModel'].get_users(user_id)
+            return self.load_view('/restaurants/dashboard.html')
+        else:
+            for message in user_id['errors']:
+                flash(message, 'regis_errors')
 
-        return self.load_view('/restaurants/dashboard.html', users=users)
-
+            return redirect('/')
     
 
     def logout(self):
