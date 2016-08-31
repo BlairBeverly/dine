@@ -79,27 +79,37 @@
         <!-- Sidebar -->
         <div id="sidebar-wrapper">
             <ul class="sidebar-nav">
+                <li style="margin-top:50px" id="pushDown" class="sidebar-brand">
+                    {% if nextpage > 1 %}
+                        <a style ="display:inline-block" href="/restaurants/{{ nextpage-2 }}">< Last 10 </a>
+                    {% endif %}
+                    <a style ="display:inline-block; position:absolute; right:30px" href="/restaurants/{{ nextpage }}">Next 10 > </a>
+                </li>
 
                 {% for location in locations %}
                 <li>
-                    <a href="#">
-                        <div id="faveBox">
+                    <!-- <a href="#"> -->
+                        <div id= "faveBox">
 
                             <div id="scoreBox">{{ location['score'] }}</div>
-                            <h5 id="textFixUp">{{ location['name']}}</h5>
+                            <div id="textWrapFix">
+                                <h5 id="textFixUp">{{ location['name'] }}</h5>
+                            </div>
                             <div id="rightBoxContent">
 <!-- The DIV below will be a heart for "favoriting/unfavor" -->
                               <div id="unFavorite"><input type="checkbox"></div>
                             </div>
                         </div>
-                    </a>
+                    <!-- </a> -->
                 </li>
 
                 {% endfor %}
 
             </ul>
-        </div>
-        <!-- /#sidebar-wrapper -->
+        </div><!-- /#sidebar-wrapper -->
+
+<!-- ============= Map Section ===============
+==============================================-->       
         <div id = "mapWrap">
         <!-- Page Content -->
 
