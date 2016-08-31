@@ -49,8 +49,11 @@
             </div>
         </form>  
         <div class="navbar-form navbar-right btn-group">
-            <button type="button" class="btn btn-default">Score</button>
-            <button type="button" class="btn btn-default" href="#menu-toggle" id="menu-toggle">Favorites</button>
+        <form action="/restaurants/filter" method="post">
+            <span style="color:white;">Min Score:</span> <input type="number" min="0" max="100" style="width:45px;" name="min_score"> &nbsp;
+            <span style="color:white;">Only favorites:</span> <input type="checkbox" name="favorites">&nbsp;
+            <button type="submit" class="btn btn-default">Filter</button>
+        </form>
 
 <!-- ==== I'm waiting on a reply about how to add action to this button without using <form action = "/logout">, but I'm not going to change anything as far as Login, Register, Logout - so we can proceed with the routes naming, and I'll keep you updated on when I get this working ===================================== -->
             
@@ -59,7 +62,7 @@
           <form class="navbar-form">
             <div class="form-group" style="display:inline;">
               <div class="input-group">
-                <input type="text" class="form-control" id = "longer">
+                <input type="text" class="form-control" style="width:300px">
                 <span class="input-group-addon"><span class="glyphicon glyphicon-search"></span></span>
               </div>
             </div>
@@ -86,13 +89,13 @@
                 {% for location in locations %}
                 <li>
                     <a href="#">
-                        <div id ="faveBox">
+                        <div id="faveBox">
 
-                            <div id = "scoreBox">100</div>
-                            <h3 id = "textFixUp">{{ location['name']}}</h3>
-                            <div id = "rightBoxContent">
+                            <div id="scoreBox">{{ location['score'] }}</div>
+                            <h5 id="textFixUp">{{ location['name']}}</h5>
+                            <div id="rightBoxContent">
 <!-- The DIV below will be a heart for "favoriting/unfavor" -->
-                              <div id = "unFavorite"><input type = "checkbox"></div>
+                              <div id="unFavorite"><input type="checkbox"></div>
                             </div>
                         </div>
                     </a>
@@ -134,7 +137,7 @@
         var map = new google.maps.Map(document.getElementById('map'), {
           center: {lat: 37.7749, lng: -122.45},
           scrollwheel: false,
-          zoom: 12
+          zoom: 13
         });
 
         {% for location in locations %}
