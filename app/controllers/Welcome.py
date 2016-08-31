@@ -21,14 +21,17 @@ class Welcome(Controller):
             "password" : request.form['password'],
             "phone" : request.form['phone']
         }
-        sys.stderr.write('Test2\n')
+
         user_id = self.models['WelcomeModel'].add_user(user_info)
-        sys.stderr.write('Test3\n')
-        session['id'] = user_id[0]['id']
 
-        sys.stderr.write('Test4\n')
-        return redirect('/restaurants/0') 
+        if user_id['status'] == True:
+            session['id'] = user_id['user']['id']
+            return redirect('/restaurants/0') 
 
+        else:
+            for message in user_id['errors']:
+                flash(message, 'regis_errors')
+            return redirect('/')
 
     def login(self):
         user_info = {
@@ -37,11 +40,15 @@ class Welcome(Controller):
         }
 
         user_id = self.models['WelcomeModel'].login_user(user_info)
-
-        session['id'] = user_id[0]['id']
-        session['email'] = user_id[0]['email']
-
-        return redirect('/restaurants/0') 
+ 
+        if user_id['status'] == True:
+            session['id'] = user_id['user']['id']
+            return redirect('/restaurants/0') 
+        
+        else:
+            for message in user_id['errors']:
+                flash(message, 'regis_errors')
+            return redirect('/')
 
 
     def logout(self):
