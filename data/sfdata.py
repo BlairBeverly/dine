@@ -169,11 +169,11 @@ def refresh_entire_dataset():
 
 
 
-add_new_violations()
-add_new_businesses()
-add_new_inspections()
+# add_new_violations()
+# add_new_businesses()
+# add_new_inspections()
 
-#refresh_entire_dataset()
+refresh_entire_dataset()
 
 
 

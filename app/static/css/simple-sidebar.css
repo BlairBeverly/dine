@@ -74,16 +74,27 @@ body {
     width: 100%;
     height: 100px;
     border: 2px groove gray;
-    margin-right: 5px;
+    margin-right: 15px;
     margin-bottom: 5px;
     padding: 2px;
+    display: inline-block;
 }
+    
+    #textWrapFix {
+        width: 220px;
+        height: 80px;
+        margin-top: 1px;
+        margin-bottom: 1px;
+        /*background-color: pink;*/
+        display: inline-block;
+        vertical-align: top;
+    }
     
     #rightBoxContent {
         display: inline-block;
         float: right;
-        width: 35px;
         height: 100%;
+        margin-right: 5px;
     }
 
         #unFavorite {
@@ -97,7 +108,6 @@ body {
         margin-left: 10px;
         margin-top: 15px;
         display: inline-block;
-        vertical-align: top;
     }
 
     #scoreBox {
