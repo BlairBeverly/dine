@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
 <!-- SITE TITLE -->
-    <title>DineWhich</title>
+    <title>PlateCheck</title>
 
 <!-- === favicon and app touch icon ===
 ======================================= -->
@@ -1181,6 +1181,13 @@
                 </div>
                 <div class="box">
                     <div class="content registerBox" style="display:none;">
+                        {% with messages = get_flashed_messages() %}
+                            {% if messages %}
+                              {% for message in messages %}
+                                <p>{{message}}</p>
+                              {% endfor %}
+                            {% endif %}
+                        {% endwith %}
                         <div class="form">
                             <form action="/register" method="post" html="{:multipart=>true}" data-remote="true" accept-charset="UTF-8">
                                 <input id="email" class="form-control" type="text" placeholder="Email" name="email">
