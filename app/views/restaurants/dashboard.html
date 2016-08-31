@@ -76,132 +76,27 @@
                         My Favorites
                     </a>
                 </li>
+
+                {% for location in locations %}
                 <li>
                     <a href="#">
                         <div id ="faveBox">
-                            <div id = "scoreBox">100</div>
-                            <h3 id = "textFixUp">Sushi 85</h3>
-                            <div id = "rightBoxContent">
-<!-- The DIV below will be a heart for "favoriting/unfavor" -->
-                              <div id = "unFavorite"><input type = "checkbox"></div>
-                            </div>
+
+                            <p>{{ location['name']}}</p>
+
                         </div>
                     </a>
                 </li>
-                <li>
-                     <a href="#">
-                        <div id ="faveBox">
-                            <div id = "scoreBox">95</div>
-                            <h3 id = "textFixUp">Sushi 85</h3>
-                            <div id = "rightBoxContent">
-<!-- The DIV below will be a heart for "favoriting/unfavor" -->
-                              <div id = "unFavorite"><input type = "checkbox"></div>
-                            </div>
-                        </div>
-                    </a>
-                </li>
-                <li>
-                     <a href="#">
-                        <div id ="faveBox">
-                            <div id = "scoreBox">65</div>
-                            <h3 id = "textFixUp">Sushi 85</h3>
-                            <div id = "rightBoxContent">
-<!-- The DIV below will be a heart for "favoriting/unfavor" -->
-                              <div id = "unFavorite"><input type = "checkbox"></div>
-                            </div>
-                        </div>
-                    </a>
-                </li>
-                <li>
-                     <a href="#">
-                        <div id ="faveBox">
-                            <div id = "scoreBox">7</div>
-                            <h3 id = "textFixUp">Sushi 85</h3>
-                            <div id = "rightBoxContent">
-<!-- The DIV below will be a heart for "favoriting/unfavor" -->
-                              <div id = "unFavorite"><input type = "checkbox"></div>
-                            </div>
-                        </div>
-                    </a>
-                </li>
-                <li>
-                     <a href="#">
-                        <div id ="faveBox">
-                            <div id = "scoreBox">55</div>
-                            <h3 id = "textFixUp">Sushi 85</h3>
-                            <div id = "rightBoxContent">
-<!-- The DIV below will be a heart for "favoriting/unfavor" -->
-                              <div id = "unFavorite"><input type = "checkbox"></div>
-                            </div>
-                        </div>
-                    </a>
-                </li>
-                <li>
-                     <a href="#">
-                        <div id ="faveBox">
-                            <div id = "scoreBox">89</div>
-                            <h3 id = "textFixUp">Sushi 85</h3>
-                            <div id = "rightBoxContent">
-<!-- The DIV below will be a heart for "favoriting/unfavor" -->
-                              <div id = "unFavorite"><input type = "checkbox"></div>
-                            </div>
-                        </div>
-                    </a>
-                </li>
-                <li>
-                     <a href="#">
-                        <div id ="faveBox">
-                            <div id = "scoreBox">23</div>
-                            <h3 id = "textFixUp">Sushi 85</h3>
-                            <div id = "rightBoxContent">
-<!-- The DIV below will be a heart for "favoriting/unfavor" -->
-                              <div id = "unFavorite"><input type = "checkbox"></div>
-                            </div>
-                        </div>
-                    </a>
-                </li>
-                <li>
-                     <a href="#">
-                        <div id ="faveBox">
-                            <div id = "scoreBox">33</div>
-                            <h3 id = "textFixUp">Sushi 85</h3>
-                            <div id = "rightBoxContent">
-<!-- The DIV below will be a heart for "favoriting/unfavor" -->
-                              <div id = "unFavorite"><input type = "checkbox"></div>
-                            </div>
-                        </div>
-                    </a>
-                </li>
-                <li>
-                     <a href="#">
-                        <div id ="faveBox">
-                            <div id = "scoreBox">12</div>
-                            <h3 id = "textFixUp">Sushi 85</h3>
-                            <div id = "rightBoxContent">
-<!-- The DIV below will be a heart for "favoriting/unfavor" -->
-                              <div id = "unFavorite"><input type = "checkbox"></div>
-                            </div>
-                        </div>
-                    </a>
-                </li>
-                <li>
-                     <a href="#">
-                        <div id ="faveBox">
-                            <div id = "scoreBox">48</div>
-                            <h3 id = "textFixUp">Sushi 85</h3>
-                            <div id = "rightBoxContent">
-<!-- The DIV below will be a heart for "favoriting/unfavor" -->
-                              <div id = "unFavorite"><input type = "checkbox"></div>
-                            </div>
-                        </div>
-                    </a>
-                </li>
+                {% endfor %}
+
             </ul>
         </div>
         <!-- /#sidebar-wrapper -->
         <div id = "mapWrap">
         <!-- Page Content -->
+
         <div id="page-content-wrapper">
+         
             <div class="container-fluid">
                 <div class="row">
                     <div class="col-lg-12" id = "left_rightNoPad">
@@ -211,7 +106,9 @@
                   <!--       <a href="#menu-toggle" class="btn btn-default" id="menu-toggle">Show Favorites</a> -->
                     </div>
                 </div>
+
             </div>
+
         </div>
         <!-- /#page-content-wrapper -->
         </div>
@@ -229,13 +126,15 @@
           zoom: 12
         });
 
-        var myLatLng = {lat: 37.791116, lng: -122.403816}
+        {% for location in locations %}
 
-        var marker = new google.maps.Marker({
-          position: myLatLng,
-          map: map,
-          title: 'Tiramisu Kitchen'
-        });
+          var marker = new google.maps.Marker({
+            position: {lat: {{ location['latitude'] }}, lng: {{ location['longitude'] }}},
+            map: map,
+            title: '{{ location['title'] }}'
+          });
+
+        {% endfor %}
 
       }
 

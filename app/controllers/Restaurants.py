@@ -10,8 +10,9 @@ class Restaurants(Controller):
 
    
     def index(self):
-        
-        return self.load_view('/restaurants/dashboard.html')
+
+        locations = self.models['Restaurant'].get_next_ten_restaurants()
+        return self.load_view('/restaurants/dashboard.html', locations=locations)
 
  
 
