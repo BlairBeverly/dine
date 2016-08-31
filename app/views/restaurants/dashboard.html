@@ -32,7 +32,7 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <a class="navbar-brand" href="#"><img src = "../../static/img/dineWhichNav.png"></a>
+          <a class="navbar-brand" href="#"><img src = "../../static/img/PlateCheck.png"></a>
         </div>
         
         <div class="navbar-collapse collapse" id="navbar-collapsible">
@@ -81,10 +81,17 @@
                 <li>
                     <a href="#">
                         <div id ="faveBox">
-                            <p>{{ location['name']}}</p>
+
+                            <div id = "scoreBox">100</div>
+                            <h3 id = "textFixUp">{{ location['name']}}</h3>
+                            <div id = "rightBoxContent">
+<!-- The DIV below will be a heart for "favoriting/unfavor" -->
+                              <div id = "unFavorite"><input type = "checkbox"></div>
+                            </div>
                         </div>
                     </a>
                 </li>
+
                 {% endfor %}
 
             </ul>
