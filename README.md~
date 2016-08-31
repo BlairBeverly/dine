@@ -1,0 +1,10 @@
+
+
+To populate your database:
+-create a virtualenv, then pip install pymysql and sqlalchemy
+-run 'python data/sfdata.py'
+
+To run the app locally:
+-create another virutalenv, then pip install system/dependencies.txt
+-then 'python manage.py runserver'
+

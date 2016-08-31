@@ -1,38 +1,12 @@
-<<<<<<< HEAD
-# inspections
-=======
-# Pylot MVC (beta)
-Pylot MVC is a lightweight MVC framework built in Python leveraging flask.
+To populate your database:
 
-This framework is currently still in development. If you want to play around with it read on or clone the stable version!
+create a virtualenv, then pip install pymysql and sqlalchemy
 
-# Installation
+run 'python data/sfdata.py'
 
-First make sure you have pip installed. If you don't have it installed there are great instructions here: https://pip.pypa.io/en/latest/installing.html
+To run the app locally:
 
-Next install virtualenv
-```
-sudo pip install virtualenv
-```
+create another virutalenv, switch to it, then pip install everything listed in system/dependencies.txt
 
-Clone pylot
-```
-PARENT
-git clone -b stable https://github.com/Ketul-Patel/Pylot.git
-```
+then 'python manage.py runserver'
 
-cd into pylot (or rename and cd in) and source the setup file
-```
-cd Pylot
-. setup
-FOLLOW DIRECTIONS OUTLINED BY SETUP!
-note: there might be some fixes needed here, feel free to send them as FAQ's for this Readme (see below)
-```
-
-Now you can start your development server like so:
-```
-python manage.py runserver
-```
-
-Enjoy! More details/features coming soon!
->>>>>>> 6f72af21326eaefb53d04d53e7358f9dee80670a

@@ -14,22 +14,25 @@ class Welcome(Controller):
 		
 		return self.load_view('/welcome/landing.html')
 
-	def register(self):
-		sys.stderr.write('Test1\n')
-		user_info = {
-			"email" : request.form['email'],
-			"password" : request.form['password'],
-			"phone" : request.form['phone']
-		}
-		
-		user_id = self.models['WelcomeModel'].add_user(user_info)
-		
-		session['id'] = user_id['user']['id']
+	
+    def register(self):
+        sys.stderr.write('Test1\n')
+        user_info = {
+            "email" : request.form['email'],
+            "password" : request.form['password'],
+            "phone" : request.form['phone']
+        }
 
-		# users = self.models['WelcomeModel'].get_users(user_id)
-		# sys.stderr.write('Test4\n')
-		return self.load_view('/restaurants/dashboard.html')
+        user_id = self.models['WelcomeModel'].add_user(user_info)
 
+        if user_id['status'] == True:
+            session['id'] = user_id['user']['id']
+            return redirect('/restaurants/0') 
+
+        else:
+            for message in user_id['errors']:
+                flash(message, 'regis_errors')
+            return redirect('/')
 
 	def login(self):
 		user_info = {
@@ -37,15 +40,19 @@ class Welcome(Controller):
 			"password" : request.form['password']
 		}
 
-		user_id = self.models['WelcomeModel'].login_user(user_info)
+		
+        user_id = self.models['WelcomeModel'].login_user(user_info)
+ 
+        if user_id['status'] == True:
+            session['id'] = user_id['user']['id']
+            return redirect('/restaurants/0') 
+        
+        else:
+            for message in user_id['errors']:
+                flash(message, 'regis_errors')
+            return redirect('/')
 
-		# session['id'] = user_id[0]['id']
 
-		# users = self.models['WelcomeModel'].get_users(user_id)
-
-		return self.load_view('/restaurants/dashboard.html')
-
-	
 
 	def logout(self):
 		session.clear()

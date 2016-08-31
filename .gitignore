@@ -1,3 +1,5 @@
 venv/*
 app/config/database.py
 *.pyc
+pylotVenv/*
+data/data/*
