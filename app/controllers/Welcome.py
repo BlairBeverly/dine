@@ -26,9 +26,8 @@ class Welcome(Controller):
         sys.stderr.write('Test3\n')
         session['id'] = user_id[0]['id']
 
-        users = self.models['WelcomeModel'].get_users(user_id)
         sys.stderr.write('Test4\n')
-        return self.load_view('/restaurants/dashboard.html', users=users)
+        return redirect('/restaurants/0') 
 
 
     def login(self):
@@ -42,11 +41,8 @@ class Welcome(Controller):
         session['id'] = user_id[0]['id']
         session['email'] = user_id[0]['email']
 
-        users = self.models['WelcomeModel'].get_users(user_id)
+        return redirect('/restaurants/0') 
 
-        return self.load_view('/restaurants/dashboard.html', users=users)
-
-    
 
     def logout(self):
         session.clear()
