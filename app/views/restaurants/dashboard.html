@@ -123,7 +123,10 @@
                             <div id="rightBoxContent">
 <!-- The DIV below will be a heart for "favoriting/unfavor" -->
                               <div id="unFavorite">
-                                <input type="checkbox" >
+                                <input type="checkbox" 
+                                {% if location['favorite'] == True %}
+                                    checked
+                                {% endif %}>
                                 <input type="hidden" name="restaurant_id" value="{{ location['restaurant_id'] }}" />
                               </div>
                         </div>

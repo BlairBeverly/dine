@@ -9,29 +9,37 @@ class Restaurant(Model):
 
         if favorites:
             query = "SELECT i.restaurant_id, name, address, city, state, "\
-            "postal_code, score, latitude, longitude, MAX(date) as date "\
-            "FROM restaurants r JOIN inspections i ON (r.id = i.restaurant_id) "\
+            "postal_code, score, latitude, longitude, True AS favorite, MAX(date) "\
+            "AS date FROM restaurants r JOIN inspections i ON (r.id = i.restaurant_id) "\
             "JOIN favorites f ON (f.restaurant_id = r.id) WHERE score <> '' "\
             "AND score >= :score AND f.user_id = :user_id AND latitude <> '' "\
-            "AND longitude <> '' GROUP BY 1 ORDER BY score DESC "\
-            "LIMIT :exclude_until, 10 "
+            "AND longitude <> '' GROUP BY 1 LIMIT :exclude_until, 10 "
 
         else:
-            query = "SELECT restaurant_id, name, address, city, state, "\
-            "postal_code, score, latitude, longitude, MAX(date) as date "\
+            query = "SELECT i.restaurant_id, name, address, city, state, "\
+            "postal_code, score, latitude, longitude, CASE WHEN f.restaurant_id "\
+            "IS NOT NULL THEN True ELSE False END AS favorite, MAX(date) AS date "\
             "FROM restaurants r JOIN inspections i ON (r.id = i.restaurant_id) "\
-            "WHERE score <> '' AND score >= :score AND latitude <> '' AND "\
-            "longitude <> '' GROUP BY 1 ORDER BY score DESC "\
-            "LIMIT :exclude_until, 10 "
+            "LEFT JOIN (SELECT restaurant_id FROM favorites WHERE user_id = "\
+            ":user_id) f ON (f.restaurant_id = r.id) WHERE score <> '' AND "\
+            "score >= :score AND latitude <> '' AND longitude <> '' GROUP BY 1 "\
+            "LIMIT :exclude_until, 10"
 
         data = {'exclude_until': int(page_num)*10,
                 'score': score,
                 'user_id': user_id}
 
-        print query
-        print data
+        # print query
+        # print data
 
         return self.db.query_db(query, data)
+
+        #fav_list = [favorite['restaurant_id'] for favorite in self.get_favorites(user_id)]
+
+        # for location in locations:
+        #     if location['restaurant_id'] in fav_list:
+        #         location['favorite'] = True
+        #         print 'yes'
 
     def get_restaurant_count(self):
         pass
@@ -53,3 +61,13 @@ class Restaurant(Model):
                 'restaurant_id': restaurant_id}
 
         self.db.query_db(query, data)
+
+
+    def get_favorites(self, user_id):
+        query = "SELECT restaurant_id FROM favorites WHERE user_id = :user_id"
+        data = {'user_id': user_id}
+
+        return self.db.query_db(query, data)
+
+
+
