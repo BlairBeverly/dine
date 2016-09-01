@@ -115,7 +115,11 @@
                     <!-- <a href="#"> -->
                         <div id= "faveBox">
 
-                            <div id="scoreBox">{{ location['score'] }}</div>
+                            <div class={% if location['score']|int >=90 %}"scoreBoxGreen"
+                                        {% elif location['score']|int >= 86 %}"scoreBoxYellow"
+                                        {% elif location['score']|int >= 71 %}"scoreBoxOrange"
+                                        {% else %}"scoreBoxRed"{% endif %}>{{ location['score'] }}</div> 
+
                             <div id="textWrapFix">
                                 <h5 id="textFixUp">{{ location['name'] }}</h5><br>
                                 <h6 id="textFixUp">{{ location['address'] }}</h6>
