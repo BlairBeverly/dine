@@ -3,3 +3,4 @@ app/config/database.py
 *.pyc
 pylotVenv/*
 data/data/*
+data/twilio_credentials.py
