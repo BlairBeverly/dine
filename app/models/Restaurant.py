@@ -28,6 +28,9 @@ class Restaurant(Model):
                 'score': score,
                 'user_id': user_id}
 
+        print query
+        print data
+
         return self.db.query_db(query, data)
 
     def get_restaurant_count(self):

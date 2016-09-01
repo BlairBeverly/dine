@@ -13,11 +13,14 @@ class Restaurants(Controller):
         min_score = session.get('min_score', 0)
         favorites = session.get('only_favorites', False)
 
+        print min_score
+        print session['id']
+
         locations = self.models['Restaurant'].get_restaurants(
             page_num=page_num,
             score=min_score,
             favorites=favorites,
-            user_id = session['id'])
+            user_id=session['id'])
 
         nextpage = int(page_num) + 1
 

@@ -59,8 +59,9 @@ class WelcomeModel(Model):
             return {"status": False, "errors": errors}
         else:
 
-            get_user_query = "SELECT * FROM users ORDER BY id DESC LIMIT 1"
-            users = self.db.query_db(get_user_query)
+            get_user_query = 'SELECT * FROM users WHERE users.email = :email AND users.password = :password'
+            data = {'email': info['email'], 'password': info['password']}
+            users = self.db.query_db(get_user_query, data)
             return { "status": True, "user": users[0] }
 
         # query ='SELECT * FROM users WHERE users.email = :email AND users.password = :password'
