@@ -32,3 +32,5 @@ class Restaurant(Model):
 
     def get_restaurant_count(self):
         pass
+
+

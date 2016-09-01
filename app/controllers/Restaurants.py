@@ -31,4 +31,3 @@ class Restaurants(Controller):
         session['only_favorites'] = True if 'favorites' in request.form else False
 
         return redirect('/restaurants/0')
-

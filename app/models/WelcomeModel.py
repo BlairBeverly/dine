@@ -42,7 +42,6 @@ class WelcomeModel(Model):
 
 
     def login_user(self, info):
-
         EMAIL_REGEX = re.compile(r'^[a-za-z0-9\.\+_-]+@[a-za-z0-9\._-]+\.[a-za-z]*$')
         errors = []
 
