@@ -207,7 +207,7 @@ $(document).ready(function () {
   google.maps.event.addDomListener(window, 'load', init);
 
   function init() {
-    var myLatlng = new google.maps.LatLng(41.850033, -87.6500523);
+    var myLatlng = new google.maps.LatLng(37.3753997, -121.9123471);
     var mapOptions = {
         zoom: 15,
         scrollwheel: false,
@@ -224,7 +224,7 @@ $(document).ready(function () {
     var marker = new google.maps.Marker({
         position: myLatlng,
         map: map,
-        title: 'KreFolio!'
+        title: 'PlateCheck'
     });
   }
 
