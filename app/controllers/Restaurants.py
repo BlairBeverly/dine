@@ -43,4 +43,3 @@ class Restaurants(Controller):
     def remove_favorite(self, user_id, restaurant_id):
         self.models['Restaurant'].remove_favorite(user_id, restaurant_id)
         return "removed favorite"
-

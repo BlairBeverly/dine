@@ -109,11 +109,54 @@ body {
         display: inline-block;
     }
 
-    #scoreBox {
+/*== 70 and Below ==*/
+    .scoreBoxRed {
         display: inline-block;
         height: 100%;
         width: 75px;
         background-color: red;
+        color: white;
+        text-align: center;
+        font-weight: bold;
+        font-size: 32px;
+        padding-top: 25px;
+        margin-right: 15px;
+    }
+
+/*== 71 to 85 ==*/
+    .scoreBoxOrange {
+        display: inline-block;
+        height: 100%;
+        width: 75px;
+        background-color: orange;
+        color: white;
+        text-align: center;
+        font-weight: bold;
+        font-size: 32px;
+        padding-top: 25px;
+        margin-right: 15px;
+    }
+
+/*== 86 to 90 ==*/
+    .scoreBoxYellow {
+        display: inline-block;
+        height: 100%;
+        width: 75px;
+        background-color: yellow;
+        color: white;
+        text-align: center;
+        font-weight: bold;
+        font-size: 32px;
+        padding-top: 25px;
+        margin-right: 15px;
+    }
+
+/*== 90 and Above ==*/
+    .scoreBoxGreen {
+        display: inline-block;
+        height: 100%;
+        width: 75px;
+        background-color: green;
         color: white;
         text-align: center;
         font-weight: bold;
