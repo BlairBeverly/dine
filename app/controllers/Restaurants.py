@@ -35,8 +35,6 @@ class Restaurants(Controller):
         session['only_favorites'] = True if 'favorites' in request.form else False
 
         return redirect('/restaurants/0')
-<<<<<<< HEAD
-=======
 
     def add_favorite(self, user_id, restaurant_id):
         self.models['Restaurant'].add_favorite(user_id, restaurant_id)
@@ -46,4 +44,3 @@ class Restaurants(Controller):
         self.models['Restaurant'].remove_favorite(user_id, restaurant_id)
         return "removed favorite"
 
->>>>>>> 218bc08c09943047fe21d145a2e87c14396bdc60
