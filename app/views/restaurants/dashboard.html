@@ -4,11 +4,13 @@
     <meta http-equiv="content-type" content="text/html; charset=UTF-8">
     <meta charset="utf-8">
     <title>Dashboard</title>
-    <meta name="generator" content="Bootply" />
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-    
-    <link rel="stylesheet" href="../../static/css/dashstyles.css">
+  
+<!-- === Custom Styling, Fonts, CSS ===
+======================================= -->  
+    <link href="../../static/css/dashstyles.css" rel="stylesheet">
     <link href="../../static/css/simple-sidebar.css" rel="stylesheet">
+    <link href="../../static/css/hover.css" rel="stylesheet">
 
 <!-- === Bootstrap and animation ===
 ==================================== -->
@@ -93,12 +95,14 @@
 
                             <div id="scoreBox">{{ location['score'] }}</div>
                             <div id="textWrapFix">
-                                <h5 id="textFixUp">{{ location['name'] }}</h5>
+                                <h5 id="textFixUp">{{ location['name'] }}</h5><br>
+                                <h6 id="textFixUp">{{ location['address'] }}</h6>
                             </div>
                             <div id="rightBoxContent">
 <!-- The DIV below will be a heart for "favoriting/unfavor" -->
-                              <div id="unFavorite"><input type="checkbox"></div>
-                            </div>
+                              <div id="unFavorite">
+                                <input type="checkbox">
+                              </div>
                         </div>
                     <!-- </a> -->
                 </li>
