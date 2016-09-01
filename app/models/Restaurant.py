@@ -35,3 +35,21 @@ class Restaurant(Model):
 
     def get_restaurant_count(self):
         pass
+
+    def add_favorite(self, user_id, restaurant_id):
+        query = "INSERT INTO favorites (user_id, restaurant_id, created_at, "\
+                "updated_at) VALUES (:user_id, :restaurant_id, NOW(), NOW())"
+
+        data = {'user_id': user_id,
+                'restaurant_id': restaurant_id}
+
+        self.db.query_db(query, data)
+
+    def remove_favorite(self, user_id, restaurant_id):
+        query = "DELETE FROM favorites WHERE user_id = :user_id AND "\
+                "restaurant_id = :restaurant_id"
+
+        data = {'user_id': user_id,
+                'restaurant_id': restaurant_id}
+
+        self.db.query_db(query, data)
