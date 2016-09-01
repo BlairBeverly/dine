@@ -36,6 +36,9 @@ class Restaurant(Model):
     def get_restaurant_count(self):
         pass
 
+<<<<<<< HEAD
+
+=======
     def add_favorite(self, user_id, restaurant_id):
         query = "INSERT INTO favorites (user_id, restaurant_id, created_at, "\
                 "updated_at) VALUES (:user_id, :restaurant_id, NOW(), NOW())"
@@ -53,3 +56,4 @@ class Restaurant(Model):
                 'restaurant_id': restaurant_id}
 
         self.db.query_db(query, data)
+>>>>>>> 218bc08c09943047fe21d145a2e87c14396bdc60
