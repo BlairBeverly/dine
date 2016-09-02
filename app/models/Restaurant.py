@@ -69,4 +69,3 @@ class Restaurant(Model):
 
         return self.db.query_db(query, data)
 
-
