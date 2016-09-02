@@ -2,7 +2,7 @@ import urllib
 import zipfile
 import csv
 import sqlalchemy
-
+import datetime
 class Helper(object):
     def __init__(self, db):
         self.db = db
