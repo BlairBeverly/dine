@@ -31,7 +31,6 @@
             var restaurant_id = $(this).siblings("#restaurant_id").val();
             if ($(this).is(':checked')) {
                 $.post('/restaurants/add_favorite/'+user_id+'/'+restaurant_id, '', function(res) {
-                    alert(res)
                     });
                 }
             else {
