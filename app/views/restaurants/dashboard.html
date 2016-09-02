@@ -11,6 +11,8 @@
     <link href="../../static/css/dashstyles.css" rel="stylesheet">
     <link href="../../static/css/simple-sidebar.css" rel="stylesheet">
     <link href="../../static/css/hover.css" rel="stylesheet">
+    <link href="../../static/css/font-awesome.css" rel="stylesheet">
+    <link href="../../static/css/hover.css" rel="stylesheet">
 
 <!-- === Bootstrap and animation ===
 ==================================== -->
@@ -127,8 +129,12 @@
                             <div id="rightBoxContent">
 <!-- The DIV below will be a heart for "favoriting/unfavor" -->
                               <div id="unFavorite">
-                                <input type="checkbox" >
-                                <input type="hidden" name="restaurant_id" value="{{ location['restaurant_id'] }}" />
+                                <label class= "fancy-checkbox">
+                                    <input type="checkbox">
+                                    <i class="fa fa-fw fa-heart-o hvr-pulse unchecked"></i>
+                                    <i class="fa fa-fw fa-heart fa-lg hvr-buzz-out checked"></i>
+                                    <input type="hidden" name="restaurant_id" value="{{ location['restaurant_id'] }}" />
+                                </label>
                               </div>
                         </div>
                     <!-- </a> -->
