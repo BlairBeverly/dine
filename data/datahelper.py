@@ -162,7 +162,7 @@ class Helper(object):
 
         new_inspections = []
         if max_date == None:
-          max_date = '19000101'
+            max_date = '19000101'
 
         today = datetime.date.today().strftime('%Y%m%d')
 

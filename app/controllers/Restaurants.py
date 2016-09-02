@@ -12,15 +12,18 @@ class Restaurants(Controller):
     def index(self, page_num):
         min_score = session.get('min_score', 0)
         favorites = session.get('only_favorites', False)
+        searchquery = session.get('searchquery','')
 
         print min_score
         print session['id']
+
 
         locations = self.models['Restaurant'].get_restaurants(
             page_num=page_num,
             score=min_score,
             favorites=favorites,
-            user_id=session['id'])
+            user_id=session['id'],
+            searchquery=searchquery)
 
         nextpage = int(page_num) + 1
 
@@ -28,7 +31,8 @@ class Restaurants(Controller):
             '/restaurants/dashboard.html', 
             locations=locations, 
             nextpage=nextpage,
-            user_id=session['id'])
+            user_id=session['id'],
+            searchquery=searchquery)
 
     def filter(self):
         session['min_score'] = request.form.get('min_score', 0)
@@ -43,3 +47,8 @@ class Restaurants(Controller):
     def remove_favorite(self, user_id, restaurant_id):
         self.models['Restaurant'].remove_favorite(user_id, restaurant_id)
         return "removed favorite"
+
+    def search(self):
+        session['searchquery'] = request.form['query']
+        print session['searchquery']
+        return redirect('/restaurants/0')
