@@ -37,6 +37,7 @@ class Restaurants(Controller):
         return redirect('/restaurants/0')
 
     def add_favorite(self, user_id, restaurant_id):
+        print '=============', user_id, restaurant_id
         self.models['Restaurant'].add_favorite(user_id, restaurant_id)
         return "it worked"
 
