@@ -15,7 +15,6 @@ class Welcome(Controller):
 		return self.load_view('/welcome/landing.html')
 
 
-
 	def register(self):
 		sys.stderr.write('Test1\n')
 		info = {
@@ -36,16 +35,13 @@ class Welcome(Controller):
 			return redirect('/')
 
 
-
 	def login(self):
-		info = {
+		user_info = {
 			"email" : request.form['email'],
 			"password" : request.form['password']
 		}
 
-		user_id = self.models['WelcomeModel'].login_user(info)
-
-		print(user_id, file=sys.stderr)
+		user_id = self.models['WelcomeModel'].login_user(user_info)
  
 		if user_id['status'] == True:
 			session['id'] = user_id['user'][0]
@@ -57,6 +53,7 @@ class Welcome(Controller):
 			for message in user_id['errors']:
 				flash(message, 'regis_errors')
 			return redirect('/')
+
 
 
 	def logout(self):
