@@ -1,5 +1,7 @@
+from __future__ import print_function
 from system.core.controller import *
 
+import sys
 
 class Restaurants(Controller):
     def __init__(self, action):
@@ -13,14 +15,20 @@ class Restaurants(Controller):
         min_score = session.get('min_score', 0)
         favorites = session.get('only_favorites', False)
 
-        print min_score
-        print session['id']
+        # print min_score
+        # print session['id']
+        sys.stderr.write('------------------------------------------------------\n')
 
         locations = self.models['Restaurant'].get_restaurants(
             page_num=page_num,
             score=min_score,
             favorites=favorites,
             user_id=session['id'])
+        print(page_num, file=sys.stderr)
+        print(min_score, file=sys.stderr)
+        print(favorites, file=sys.stderr)
+        
+
 
         nextpage = int(page_num) + 1
 
