@@ -1,4 +1,3 @@
-from __future__ import print_function
 from system.core.model import Model
 import re
 import sys
@@ -61,7 +60,9 @@ class WelcomeModel(Model):
             get_user_query = 'SELECT * FROM users WHERE users.email = :email AND users.password = :password'
             data = {'email': info['email'], 'password': info['password']}
             users = self.db.query_db(get_user_query, data)
-            return { "status": True, "user": users[0] }
+            print users
+            return {"status": True, "user": users[0]}
+
 
         # query ='SELECT * FROM users WHERE users.email = :email AND users.password = :password'
         # return self.db.query_db(query, user)

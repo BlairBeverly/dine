@@ -9,7 +9,7 @@ def send_alert(restaurant, phone_num):
 
     message_body = "Alert from PlateCheck: SF Dept of Public Health "\
                    "gave your favorite restaurant, {}, a poor rating "\
-                   "at a recent health inspection. See platecheck.info "]
+                   "at a recent health inspection. See platecheck.info "\
                    "for more information.".format(restaurant)
 
     message = client.messages.create(

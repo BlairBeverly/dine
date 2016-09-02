@@ -10,7 +10,7 @@ class MySQLConnection(object):
             'database': db,
             'user': 'root',
             'password': 'root',
-            'port': '8889'
+            'port': '3306'
         }
 
         DATABASE_URI = "mysql+pymysql://{}:{}@{}:{}/{}".format(

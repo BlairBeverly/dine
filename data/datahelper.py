@@ -2,6 +2,7 @@ import urllib
 import zipfile
 import csv
 import sqlalchemy
+import datetime
 
 class Helper(object):
     def __init__(self, db):
@@ -160,6 +161,8 @@ class Helper(object):
         max_date = self.db.query_db("SELECT MAX(date) as max FROM inspections")[0]['max']
 
         new_inspections = []
+        if max_date == None:
+          max_date = '19000101'
 
         today = datetime.date.today().strftime('%Y%m%d')
 

@@ -1,1 +1,1 @@
-03 9 * * * source /Users/bbeverly/codingdojo/inspect-practice/scc/inspections/bin/activate && python /Users/bbeverly/codingdojo/inspect-practice/scc/sfdata.py > /dev/null
+03 9 * * * source /home/ubuntu/dine/data/bin/activate && python /home/ubuntu/dine/data/sfdata.py > /dev/null

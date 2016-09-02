@@ -3,3 +3,5 @@ venv/*
 pylotVenv/*
 data/data/*
 data/twilio_credentials.py
+dine.ini
+errlog
