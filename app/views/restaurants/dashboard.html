@@ -28,9 +28,10 @@
       $(document).ready(function(){
         $('input:checkbox').change(function(){
             var user_id = $('#user_id').val();
-            var restaurant_id = $(this).siblings().val();
+            var restaurant_id = $(this).siblings("#restaurant_id").val();
             if ($(this).is(':checked')) {
                 $.post('/restaurants/add_favorite/'+user_id+'/'+restaurant_id, '', function(res) {
+                    alert(res)
                     });
                 }
             else {
@@ -64,8 +65,8 @@
         <div class="navbar-collapse collapse" id="navbar-collapsible">
           
           <ul class="nav navbar-nav navbar-left">
-            <li><a href="#" id = "noLink">Home</a></li>
-            <li id = "backUp"><a href="#" id = "noLink">Contact</a></li>
+            <li><a href="/" id = "noLink">Home</a></li>
+            <li id = "backUp"><a href="/#map" id = "noLink">Contact</a></li>
           </ul>
           
         <form action="/logout"  method="post">
@@ -127,19 +128,27 @@
                                 <h6 id="textFixUp">{{ location['address'] }}</h6>
                             </div>
                             <div id="rightBoxContent">
-<!-- The DIV below will be a heart for "favoriting/unfavor" -->
+
                               <div id="unFavorite">
+
                                 <label class= "fancy-checkbox">
-                                    <input type="checkbox">
+
+                                    <input type="checkbox"
+                                    {% if location['favorite'] == True %}
+                                    checked
+                                    {% endif %}>
+
                                     <i class="fa fa-fw fa-heart-o hvr-pulse unchecked"></i>
+
                                     <i class="fa fa-fw fa-heart fa-lg hvr-buzz-out checked"></i>
-                                    <input type="hidden" name="restaurant_id" value="{{ location['restaurant_id'] }}" />
+
+                                    <input type="hidden" id="restaurant_id" value="{{ location['restaurant_id'] }}" />
                                 </label>
+
                               </div>
                         </div>
                     <!-- </a> -->
                 </li>
-
                 {% endfor %}
 
             </ul>

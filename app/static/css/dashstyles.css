@@ -54,5 +54,4 @@
 .fancy-checkbox input[type="checkbox"]:checked ~ .unchecked
 {
     display: none;
-    color: red;
 }
