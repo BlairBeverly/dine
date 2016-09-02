@@ -5,7 +5,7 @@ class Restaurant(Model):
     def __init__(self):
         super(Restaurant, self).__init__()
 
-    def get_restaurants(self, page_num, score, favorites, user_id):
+    def get_restaurants(self, page_num, score, favorites, user_id, searchquery):
 
         if favorites:
             query = "SELECT i.restaurant_id, name, address, city, state, "\
@@ -14,6 +14,17 @@ class Restaurant(Model):
             "JOIN favorites f ON (f.restaurant_id = r.id) WHERE score <> '' "\
             "AND score >= :score AND f.user_id = :user_id AND latitude <> '' "\
             "AND longitude <> '' GROUP BY 1 LIMIT :exclude_until, 10 "
+
+        elif searchquery:
+            query = "SELECT i.restaurant_id, name, address, city, state, "\
+            "postal_code, score, latitude, longitude, CASE WHEN f.restaurant_id "\
+            "IS NOT NULL THEN True ELSE False END AS favorite, MAX(date) AS date "\
+            "FROM restaurants r JOIN inspections i ON (r.id = i.restaurant_id) "\
+            "LEFT JOIN (SELECT restaurant_id FROM favorites WHERE user_id = "\
+            ":user_id) f ON (f.restaurant_id = r.id) WHERE score <> '' AND "\
+            "name LIKE CONCAT('%', :searchquery, '%') AND "\
+            "score >= :score AND latitude <> '' AND longitude <> '' GROUP BY 1 "\
+            "LIMIT :exclude_until, 10"
 
         else:
             query = "SELECT i.restaurant_id, name, address, city, state, "\
@@ -27,7 +38,8 @@ class Restaurant(Model):
 
         data = {'exclude_until': int(page_num)*10,
                 'score': score,
-                'user_id': user_id}
+                'user_id': user_id,
+                'searchquery': searchquery}
 
         # print query
         # print data
@@ -40,9 +52,6 @@ class Restaurant(Model):
         #     if location['restaurant_id'] in fav_list:
         #         location['favorite'] = True
         #         print 'yes'
-
-    def get_restaurant_count(self):
-        pass
 
     def add_favorite(self, user_id, restaurant_id):
         query = "INSERT INTO favorites (user_id, restaurant_id, created_at, "\
